@@ -1,0 +1,9 @@
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.dll.config
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.dll
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\DatabaseAccessLayer.pdb
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\EntityFramework.dll
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\EntityFramework.xml
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.dll
+C:\SampleProjects\WebApiSqlServer\DatabaseInteractionWebApi\DatabaseAccessLayer\obj\Debug\DatabaseAccessLayer.pdb

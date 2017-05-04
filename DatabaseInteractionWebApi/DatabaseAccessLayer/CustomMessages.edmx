@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CTPlatformDevDB.dbo.tblAuthetication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblAuthetication">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblCustomerMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="colEffectiveDate" Type="datetime" />
+          <Property Name="colEndDate" Type="datetime" />
+          <Property Name="colFKDMVId" Type="bigint" Nullable="false" />
+          <Property Name="colIsForAllCMF" Type="tinyint" />
+          <Property Name="colMessage" Type="varchar" MaxLength="5000" />
+          <Property Name="PropertyName" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="FKUserMaintId_LastModifiedBy" Type="bigint" />
+          <Property Name="FKUserMaintId_CreatedBy" Type="bigint" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="tblCustomerMessage" EntityType="Self.tblCustomerMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAuthetication" EntityType="Self.tblAuthetication" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblAuthetication].[UserName] AS [UserName], 
+    [tblAuthetication].[Password] AS [Password]
+    FROM [dbo].[tblAuthetication] AS [tblAuthetication]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCustomerMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="colEffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="colEndDate" Type="DateTime" Precision="3" />
+          <Property Name="colFKDMVId" Type="Int64" Nullable="false" />
+          <Property Name="colIsForAllCMF" Type="Byte" />
+          <Property Name="colMessage" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="FKUserMaintId_LastModifiedBy" Type="Int64" />
+          <Property Name="FKUserMaintId_CreatedBy" Type="Int64" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="DatabaseAccessor" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCustomerMessages" EntityType="Self.tblCustomerMessage" />
+          <EntitySet Name="tblAuthetications" EntityType="DBModel.tblAuthetication" />
+        </EntityContainer>
+        <EntityType Name="tblAuthetication">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DatabaseAccessor">
+          <EntitySetMapping Name="tblCustomerMessages">
+            <EntityTypeMapping TypeName="DBModel.tblCustomerMessage">
+              <MappingFragment StoreEntitySet="tblCustomerMessage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="colEffectiveDate" ColumnName="colEffectiveDate" />
+                <ScalarProperty Name="colEndDate" ColumnName="colEndDate" />
+                <ScalarProperty Name="colFKDMVId" ColumnName="colFKDMVId" />
+                <ScalarProperty Name="colIsForAllCMF" ColumnName="colIsForAllCMF" />
+                <ScalarProperty Name="colMessage" ColumnName="colMessage" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="FKUserMaintId_LastModifiedBy" ColumnName="FKUserMaintId_LastModifiedBy" />
+                <ScalarProperty Name="FKUserMaintId_CreatedBy" ColumnName="FKUserMaintId_CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAuthetications">
+            <EntityTypeMapping TypeName="DBModel.tblAuthetication">
+              <MappingFragment StoreEntitySet="tblAuthetication">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

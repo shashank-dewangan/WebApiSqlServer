@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DatabaseAccessor">
+    <EntitySetMapping Name="tblCustomerMessages">
+      <EntityTypeMapping TypeName="DBModel.tblCustomerMessage">
+        <MappingFragment StoreEntitySet="tblCustomerMessage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="colEffectiveDate" ColumnName="colEffectiveDate" />
+          <ScalarProperty Name="colEndDate" ColumnName="colEndDate" />
+          <ScalarProperty Name="colFKDMVId" ColumnName="colFKDMVId" />
+          <ScalarProperty Name="colIsForAllCMF" ColumnName="colIsForAllCMF" />
+          <ScalarProperty Name="colMessage" ColumnName="colMessage" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+          <ScalarProperty Name="FKUserMaintId_LastModifiedBy" ColumnName="FKUserMaintId_LastModifiedBy" />
+          <ScalarProperty Name="FKUserMaintId_CreatedBy" ColumnName="FKUserMaintId_CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAuthetications">
+      <EntityTypeMapping TypeName="DBModel.tblAuthetication">
+        <MappingFragment StoreEntitySet="tblAuthetication">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CTPlatformDevDB.dbo.tblAuthetication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblAuthetication">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblCustomerMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="colEffectiveDate" Type="datetime" />
+    <Property Name="colEndDate" Type="datetime" />
+    <Property Name="colFKDMVId" Type="bigint" Nullable="false" />
+    <Property Name="colIsForAllCMF" Type="tinyint" />
+    <Property Name="colMessage" Type="varchar" MaxLength="5000" />
+    <Property Name="PropertyName" Type="varchar" MaxLength="100" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastUpdateDate" Type="datetime" />
+    <Property Name="FKUserMaintId_LastModifiedBy" Type="bigint" />
+    <Property Name="FKUserMaintId_CreatedBy" Type="bigint" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DBModelStoreContainer">
+    <EntitySet Name="tblCustomerMessage" EntityType="Self.tblCustomerMessage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAuthetication" EntityType="Self.tblAuthetication" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblAuthetication].[UserName] AS [UserName], 
+    [tblAuthetication].[Password] AS [Password]
+    FROM [dbo].[tblAuthetication] AS [tblAuthetication]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

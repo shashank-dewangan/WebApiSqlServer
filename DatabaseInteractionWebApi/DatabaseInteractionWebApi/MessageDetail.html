@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    
+</head>
+<body>
+    UserName : <input id="txtUserName" type="text" />
+    Password : <input id="txtPassword" type="text" />
+    <br /><br />
+    <input type="button" value="Get Message Details" id="btnGetDetails" />
+    <input type="button" value="Clear" id="btnClear" />
+    <label id="lblWait"></label>
+    <ul id="lstMessages"></ul>
+    <div id="dvDetails"></div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            debugger;
+            var btnGetDetails = $('#btnGetDetails');
+            var dvDetails = $('dvDetails');
+            var lstMessages = $('#lstMessages');
+            var fulldetails = '';
+            var message = $('#lblWait');
+
+            btnGetDetails.click(function () {
+                message[0].innerText = 'waiting';
+                var username = $('#txtUserName').val();
+                var password = $('#txtPassword').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://localhost:44331/api/custommessage',
+                    dataType: 'jsonp',
+                    headers: {
+                        'Authorization' : 'Basic ' + btoa(username + ':' + password)
+                    },
+                    success: function (result) {
+                        lstMessages.empty();
+                        $.each(result, function (index, value) {
+                           
+                            fulldetails += ' Message : ' + value.colMessage + '<br />';
+                            lstMessages.append('<li>' + fulldetails + '</li>');
+                        });
+                        message[0].innerText = '';
+                    },
+                    complete : function(jqXHR)
+                    {
+                        message[0].innerText = jqXHR.status;
+                    }                    
+                });
+            });
+
+            var btnClear = $('#btnClear');
+            btnClear.click(function () {
+                lstMessages.empty();
+                message[0].innerText = '';
+            });
+        });
+    </script>
+</body>
+</html>

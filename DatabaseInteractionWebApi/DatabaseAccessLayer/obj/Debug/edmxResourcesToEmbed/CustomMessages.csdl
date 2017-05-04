@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblCustomerMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="colEffectiveDate" Type="DateTime" Precision="3" />
+    <Property Name="colEndDate" Type="DateTime" Precision="3" />
+    <Property Name="colFKDMVId" Type="Int64" Nullable="false" />
+    <Property Name="colIsForAllCMF" Type="Byte" />
+    <Property Name="colMessage" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="PropertyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="FKUserMaintId_LastModifiedBy" Type="Int64" />
+    <Property Name="FKUserMaintId_CreatedBy" Type="Int64" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityContainer Name="DatabaseAccessor" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCustomerMessages" EntityType="Self.tblCustomerMessage" />
+    <EntitySet Name="tblAuthetications" EntityType="DBModel.tblAuthetication" />
+  </EntityContainer>
+  <EntityType Name="tblAuthetication">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
